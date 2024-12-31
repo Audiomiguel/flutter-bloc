@@ -34,6 +34,10 @@ class BlocsProviders extends StatelessWidget {
         create: (context) => getIt<GuestsBloc>(),
         lazy: false,
       ),
+      BlocProvider(
+        create: (context) => getIt<PokemonBloc>(),
+        lazy: false,
+      )
     ], child: const MyApp());
   }
 }

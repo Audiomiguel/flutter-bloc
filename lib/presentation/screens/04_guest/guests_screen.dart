@@ -1,3 +1,4 @@
+import 'package:blocs_app/config/config.dart';
 import 'package:blocs_app/presentation/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,9 @@ class GuestsScreen extends StatelessWidget {
       body: const _TodoView(),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          context.read<GuestsBloc>().addGuest(RandomGenerator.getRandomName());
+        },
       ),
     );
   }
@@ -58,7 +61,9 @@ class _TodoView extends StatelessWidget {
               return SwitchListTile(
                   title: Text(guest.description),
                   value: guest.done,
-                  onChanged: (value) {});
+                  onChanged: (value) {
+                    guestBloc.toggleGuest(guest.id);
+                  });
             },
           ),
         )
